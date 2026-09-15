@@ -1,0 +1,13 @@
+name: rapider_page_contract
+description: A contract package defining how Rapider pages are built.
+version: 1.0.0
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  rapider_sdk:
+    path: ../rapider_sdk

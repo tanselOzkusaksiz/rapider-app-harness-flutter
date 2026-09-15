@@ -1,0 +1,11 @@
+name: rapider_ui
+description: Reusable UI widgets for Rapider pages.
+version: 1.0.0
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter

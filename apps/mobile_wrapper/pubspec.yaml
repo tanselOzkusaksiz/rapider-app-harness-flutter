@@ -1,0 +1,23 @@
+name: mobile_wrapper
+description: A mobile application wrapper for Rapider pages.
+version: 1.0.0
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  rapider_sdk:
+    path: ../../packages/rapider_sdk
+  rapider_page_contract:
+    path: ../../packages/rapider_page_contract
+  rapider_ui:
+    path: ../../packages/rapider_ui
+  dashboard:
+    path: ../../pages/dashboard
+  customers:
+    path: ../../pages/customers
+  customer_detail:
+    path: ../../pages/customer_detail

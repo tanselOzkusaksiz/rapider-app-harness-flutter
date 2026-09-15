@@ -1,0 +1,12 @@
+name: rapider_flutter_workspace
+environment:
+  sdk: ^3.11.0
+workspace:
+  - packages/rapider_sdk
+  - packages/rapider_ui
+  - packages/rapider_page_contract
+  - pages/dashboard
+  - pages/customers
+  - pages/customer_detail
+  - runners/web_page_runner
+  - apps/mobile_wrapper

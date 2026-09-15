@@ -1,0 +1,11 @@
+name: rapider_sdk
+description: The core SDK for Rapider pages.
+version: 1.0.0
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
