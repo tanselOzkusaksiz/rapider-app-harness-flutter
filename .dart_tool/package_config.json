@@ -1,0 +1,106 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "characters",
+      "rootUri": "file:///Users/tanselozkusaksiz/.pub-cache/hosted/pub.dev/characters-1.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "collection",
+      "rootUri": "file:///Users/tanselozkusaksiz/.pub-cache/hosted/pub.dev/collection-1.19.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "flutter",
+      "rootUri": "file:///Users/tanselozkusaksiz/Projects/_tools/flutter/packages/flutter",
+      "packageUri": "lib/",
+      "languageVersion": "3.9"
+    },
+    {
+      "name": "material_color_utilities",
+      "rootUri": "file:///Users/tanselozkusaksiz/.pub-cache/hosted/pub.dev/material_color_utilities-0.13.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "meta",
+      "rootUri": "file:///Users/tanselozkusaksiz/.pub-cache/hosted/pub.dev/meta-1.17.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "sky_engine",
+      "rootUri": "file:///Users/tanselozkusaksiz/Projects/_tools/flutter/bin/cache/pkg/sky_engine",
+      "packageUri": "lib/",
+      "languageVersion": "3.9"
+    },
+    {
+      "name": "vector_math",
+      "rootUri": "file:///Users/tanselozkusaksiz/.pub-cache/hosted/pub.dev/vector_math-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "rapider_flutter_workspace",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "rapider_sdk",
+      "rootUri": "../packages/rapider_sdk",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "rapider_ui",
+      "rootUri": "../packages/rapider_ui",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "rapider_page_contract",
+      "rootUri": "../packages/rapider_page_contract",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "dashboard",
+      "rootUri": "../pages/dashboard",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "customers",
+      "rootUri": "../pages/customers",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "customer_detail",
+      "rootUri": "../pages/customer_detail",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "web_page_runner",
+      "rootUri": "../runners/web_page_runner",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "mobile_wrapper",
+      "rootUri": "../apps/mobile_wrapper",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    }
+  ],
+  "generator": "pub",
+  "generatorVersion": "3.11.5",
+  "flutterRoot": "file:///Users/tanselozkusaksiz/Projects/_tools/flutter",
+  "flutterVersion": "3.41.7",
+  "pubCache": "file:///Users/tanselozkusaksiz/.pub-cache"
+}
