@@ -15,13 +15,17 @@ class MobileWrapperApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WorkspaceSelector(
-      sdk: sdk,
-      child: MaterialApp(
+    return MaterialApp(
       title: 'Rapider Mobile Wrapper',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      builder: (context, child) {
+        return WorkspaceSelector(
+          sdk: sdk,
+          child: child ?? const SizedBox(),
+        );
+      },
       initialRoute: 'dashboard',
       onGenerateRoute: (settings) {
         final pageDef = pageRegistry[settings.name];
@@ -37,7 +41,6 @@ class MobileWrapperApp extends StatelessWidget {
           ),
         );
       },
-    ),
     );
   }
 }
