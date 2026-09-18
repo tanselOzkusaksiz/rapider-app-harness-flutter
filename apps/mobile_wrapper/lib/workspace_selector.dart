@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rapider_sdk/rapider_sdk.dart';
+import 'package:rapider_ui/auth/login_screen.dart';
 
 class WorkspaceSelector extends StatefulWidget {
   final RapiderSDK sdk;
@@ -14,6 +15,7 @@ class WorkspaceSelector extends StatefulWidget {
 class _WorkspaceSelectorState extends State<WorkspaceSelector> {
   bool isLoading = true;
   bool isWorkspaceSelected = false;
+  bool isAuthenticated = false;
   List<Map<String, dynamic>> workspaces = [];
 
   @override
@@ -23,8 +25,25 @@ class _WorkspaceSelectorState extends State<WorkspaceSelector> {
   }
 
   Future<void> _checkWorkspaces() async {
-    // In a real app, first ensure user is logged in via widget.sdk.auth.getToken()
+    setState(() => isLoading = true);
     
+    final requireLogin = RapiderEnvironment.requireLogin;
+
+    if (requireLogin) {
+      final token = await widget.sdk.auth.getToken();
+      if (token == null) {
+        setState(() {
+          isAuthenticated = false;
+          isLoading = false;
+        });
+        return;
+      } else {
+        isAuthenticated = true;
+      }
+    } else {
+      isAuthenticated = true; // Bypass login
+    }
+
     // Check if we already have a selected workspace
     if (widget.sdk.auth.currentWorkspaceId != null) {
       setState(() {
@@ -43,6 +62,12 @@ class _WorkspaceSelectorState extends State<WorkspaceSelector> {
         setState(() {
           isWorkspaceSelected = true;
         });
+      }
+    } catch (e) {
+      // If fetching fails (e.g. token expired), reset token and show login
+      if (requireLogin) {
+        await widget.sdk.auth.logout();
+        isAuthenticated = false;
       }
     } finally {
       setState(() {
@@ -63,8 +88,25 @@ class _WorkspaceSelectorState extends State<WorkspaceSelector> {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
+      return Navigator(
+        key: const ValueKey('nav_loading'),
+        onGenerateRoute: (_) => MaterialPageRoute(
+          builder: (context) => const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          ),
+        ),
+      );
+    }
+
+    if (!isAuthenticated) {
+      return Navigator(
+        key: const ValueKey('nav_login'),
+        onGenerateRoute: (_) => MaterialPageRoute(
+          builder: (context) => RapiderLoginScreen(
+            sdk: widget.sdk,
+            onLoginSuccess: _checkWorkspaces,
+          ),
+        ),
       );
     }
 
@@ -72,18 +114,23 @@ class _WorkspaceSelectorState extends State<WorkspaceSelector> {
       return widget.child;
     }
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('Select Workspace')),
-      body: ListView.builder(
-        itemCount: workspaces.length,
-        itemBuilder: (context, index) {
-          final ws = workspaces[index];
-          return ListTile(
-            title: Text(ws['name']?.toString() ?? 'Unknown Workspace'),
-            subtitle: Text(ws['id']?.toString() ?? ''),
-            onTap: () => _selectWorkspace(ws['id'] as String),
-          );
-        },
+    return Navigator(
+      key: const ValueKey('nav_workspaces'),
+      onGenerateRoute: (_) => MaterialPageRoute(
+        builder: (context) => Scaffold(
+          appBar: AppBar(title: const Text('Select Workspace')),
+          body: ListView.builder(
+            itemCount: workspaces.length,
+            itemBuilder: (context, index) {
+              final ws = workspaces[index];
+              return ListTile(
+                title: Text(ws['name']?.toString() ?? 'Unknown Workspace'),
+                subtitle: Text(ws['id']?.toString() ?? ''),
+                onTap: () => _selectWorkspace(ws['id'] as String),
+              );
+            },
+          ),
+        ),
       ),
     );
   }

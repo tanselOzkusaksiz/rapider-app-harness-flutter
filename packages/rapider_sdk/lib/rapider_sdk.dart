@@ -6,5 +6,6 @@ export 'src/navigation.dart';
 export 'src/actions.dart';
 export 'src/context.dart';
 export 'src/auth.dart';
+export 'src/environment.dart';
 export 'src/web_sdk.dart';
 export 'src/mobile_sdk.dart';
